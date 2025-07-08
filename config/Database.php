@@ -2,8 +2,8 @@
 
 class Database {
     private $host = "localhost";
-    private $db_name = "ctrack_db";
-    private $username = "projec15_ctrack";
+    private $db_name = "projec15_ctrack_db";
+    private $username = "projec15_root";
     private $password = "@kaesquare123";
     public $conn;
 
