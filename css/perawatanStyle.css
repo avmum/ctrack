@@ -1,0 +1,748 @@
+/* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #fcddec 0%, #fde7f3 25%, #f8d7da 50%, #fdeef1 75%, #fcddec 100%);
+  background-size: 300% 300%;
+  animation: gradientWave 10s ease-in-out infinite, fadeInBody 1.2s ease-out;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  /* Efek lapisan glass yang lebih tebal */
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 25%, rgba(255, 255, 255, 0.45) 0%, transparent 80%),
+    radial-gradient(ellipse 500px 300px at 85% 75%, rgba(255, 182, 193, 0.25) 0%, transparent 80%),
+    linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0));
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: glassFloat 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* ========== Sticky Footer Layout ========== */
+/* Sticky Footer Layout */
+html, body {
+  height: 100%;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: 1 0 auto;
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInBody {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glassFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Konten Utama */
+.main-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Judul */
+.main-container h1 {
+  text-align: center;
+  color: #6a0572;
+  margin-bottom: 40px;
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
+/* Setiap Section */
+.section {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(155, 93, 229, 0.1);
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  color: #6a0572;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Jadwal Pengobatan Section */
+.treatment-schedule {
+  margin: 40px auto 20px;
+  padding: 20px;
+  background: #fff0f6;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(155, 93, 229, 0.1);
+  max-width: 1000px;
+}
+
+.treatment-schedule h2 {
+  font-size: 24px;
+  color: #7e4baa;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Tabel Jadwal Obat */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background-color: white;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #f4d1f5;
+  font-size: 0.95em;
+}
+
+.schedule-table th {
+  background-color: #fcddec;
+  color: #6a0572;
+  font-weight: bold;
+}
+
+.schedule-table td input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* Efek dicentang (selesai) */
+.selesai td {
+  text-decoration: line-through;
+  opacity: 0.6;
+  transition: 0.3s ease;
+}
+
+/* Tombol Tambah */
+.add-btn {
+  margin-bottom: 20px;
+  background-color: #f15bb5;
+  display: inline;
+}
+
+/* Popup Form */
+.popup-form {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+  animation: fadeInUp 0.4s ease-in-out;
+}
+
+/* Card Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.popup-form h3 {
+  color: #6b21a8;               /* Ungu tua yang elegan */
+  font-size: 1.4rem;            /* Sedikit lebih kecil dari <h2> */
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed #d8b4ef; /* Tambahan garis pemisah */
+  padding-bottom: 8px;
+}
+
+.popup-form textarea {
+  height: 100px;
+}
+
+/* Formulir */
+.care-form input[type="text"],
+.care-form input[type="date"],
+.care-form input[type="time"],
+.care-form input[type="number"],  /* tambahkan ini */
+.care-form textarea,
+.care-form select {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #e2c4ff;
+  border-radius: 12px;
+  background-color: #fff8fc;
+  transition: border 0.3s, box-shadow 0.2s;
+  font-size: 1em;
+}
+
+.care-form input:focus,
+.care-form textarea:focus,
+.care-form select:focus {
+  outline: none;
+  border-color: #9b5de5;
+  box-shadow: 0 0 6px #d4aaff;
+}
+
+/* Tombol Simpan/Form */
+.btn {
+  background: linear-gradient(to right, #9b5de5, #f15bb5);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #521899, #b44bc5);
+  transform: scale(1.05);
+}
+
+/* Tombol Batal */
+.btn-batal {
+  background: linear-gradient(to right, #ffe0e9, #fcd8fc);
+  color: #b0275b;
+  border: 2px solid #f9c5d1;
+  padding: 12px 24px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  min-width: 100%;
+  display: inline-block;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease, border 0.3s ease;
+}
+
+.btn-batal:hover {
+  background: linear-gradient(to right, #fcbad3, #fcd5ce);
+  border-color: #f48fb1;
+  transform: scale(1.05);
+}
+
+
+/* Tabel Riwayat Konsultasi */
+.riwayat-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fffdfd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.riwayat-table th,
+.riwayat-table td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #f1c5ea;
+}
+
+.riwayat-table th {
+  background-color: #fcddec;
+  color: #6a0572;
+  font-weight: bold;
+}
+
+.riwayat-table td {
+  color: #7a517b;
+  font-size: 0.95em;
+}
+
+/* Tombol Menu */
+.menu-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.menu-btn {
+  background: linear-gradient(135deg, #b621fe, #ff6ec4); /* ungu ke pink */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+  background: linear-gradient(135deg, #c158dc, #ff8ecb);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.menu-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Style untuk latar belakang popup */
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* semi-transparan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Style isi popup */
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeInUp 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+}
+
+.popup-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tombol-tombol di popup */
+.popup-content .btn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content .btn:hover {
+  background-color: #574fd6;
+}
+
+.popup-content .btn.cancel {
+  background-color: #ccc;
+  color: #ffffff;
+}
+
+.popup-content .btn.cancel:hover {
+  background-color: #bbb;
+}
+
+/* Hilangkan garis putus-putus saat tombol di-klik */
+.popup-content .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.3);
+}
+
+/* Animasi popup */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Judul dengan hiasan */
+.schedule-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 900; /* Super tebal */
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  padding: 18px 26px;
+  border-radius: 16px;
+  color: #5e0080;
+  background: linear-gradient(90deg, #f5e9fc, #e2c3ff, #f5e9fc);
+  box-shadow: 0 4px 18px rgba(155, 93, 229, 0.15);
+  text-shadow: 1px 1px 2px rgba(90, 0, 120, 0.2);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.schedule-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent);
+  animation: shimmer 4s infinite linear;
+  z-index: 0;
+}
+
+.schedule-title span {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(30%);
+  }
+}
+
+/*=======Footer========*/
+footer {
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.88), rgba(241, 91, 181, 0.88)), url('../assets/bg2.jpeg') center/cover no-repeat;
+  color: #fff;
+  padding: 20px 15px;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 50px;
+  border-radius: 30px 30px 0 0;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 160px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffe6f5;
+}
+
+.footer-column p,
+.footer-column li,
+.footer-column a {
+  color: #fefefe;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.footer-column a {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #ffd6ec;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  font-size: 12px;
+  color: #fceaff;
+}
+
+/* ==========================================================
+   1. DESKTOP ≤ 1200 px
+   — Sedikit persempit kontainer agar tak terlalu melebar
+   ========================================================== */
+@media (max-width:1200px){
+
+  .main-container        { max-width: 92%; }
+
+  .treatment-schedule,
+  .riwayat-table,
+  .section               { margin-left:auto; margin-right:auto; }
+}
+
+/* ==========================================================
+   2. LAPTOP & LARGE-TABLET ≤ 992 px
+   — Grid kolom-tunggal, tombol melebarkan diri
+   ========================================================== */
+@media (max-width:992px){
+
+  /* — Judul & heading — */
+  .main-container h1     { font-size: 1.9rem; margin-bottom:32px; }
+  .section h2            { font-size: 1.25rem; }
+
+  /* — Kontainer & padding — */
+  .section,
+  .treatment-schedule    { padding: 22px 24px; }
+  .main-container        { padding: 16px; }
+
+  /* — Menu tombol — */
+  .menu-nav              { gap: .75rem; }
+  .menu-btn              { flex:1 1 48%; text-align:center; }
+
+  /* — Tombol form — */
+  .btn, .btn-batal,
+  .popup-content .btn    { width: 100%; }
+}
+
+/* ==========================================================
+   3. PORTRAIT TABLET & LARGE PHONE ≤ 768 px
+   — Satu-kolom penuh, teks diperkecil, tabel pakai scroll-x
+   ========================================================== */
+@media (max-width:768px){
+
+  body, p, label,
+  .menu-btn, .btn,
+  .schedule-table td,
+  .riwayat-table td      { font-size: .9rem; }
+
+  /* — Menu jadi tumpuk — */
+  .menu-btn              { flex:1 1 100%; }
+
+  /* — Section & card — */
+  .section,
+  .treatment-schedule    { margin-bottom:28px; }
+
+  /* — Tabel: scroll horizontal jika kolom banyak — */
+  .schedule-table,
+  .riwayat-table         { min-width: 600px; }   /* ubah jika kolom lebih sedikit */
+  .main-container,
+  .treatment-schedule,
+  .section               { overflow-x:auto; }
+
+  /* — Popup lebih rapat — */
+  .popup-content         { padding: 24px 20px; }
+}
+
+/* ==========================================================
+   4. HANDPHONE ≤ 576 px
+   — Padding & radius menciut, judul lebih kecil
+   ========================================================== */
+@media (max-width:576px){
+
+  .main-container h1     { font-size:1.6rem; }
+
+  .section,
+  .treatment-schedule    { padding:18px 16px; border-radius:14px; }
+
+  .schedule-table th,
+  .schedule-table td,
+  .riwayat-table th,
+  .riwayat-table td      { padding:10px 12px; white-space:normal; }
+
+  .schedule-title        { font-size:1.8rem; padding:14px 18px; }
+
+  .btn, .btn-batal       { padding:10px 18px; font-size:.9rem; }
+}
+
+/* ==========================================================
+   5. EXTRA-SMALL DEVICES ≤ 400 px
+   — Font & margin minimal agar tetap muat
+   ========================================================== */
+@media (max-width:400px){
+
+  body                   { font-size:.82rem; }
+
+  .main-container h1     { font-size:1.4rem; margin-bottom:24px; }
+  .schedule-title        { font-size:1.55rem; }
+
+  .menu-btn              { padding:10px 16px; }
+
+  .section,
+  .treatment-schedule    { margin:20px 0; padding:14px 12px; }
+
+  .popup-content         { padding:20px 16px; }
+}
+
+/*POP-UP untuk succes menambahkan*/
+.popup-success {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #c8f7c5;
+  color: #2d7a33;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+/* Pop-up Konfirmasi */
+/* Popup Overlay (sudah oke) */
+/* ====== POPUP OVERLAY ====== */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 0 20px; /* Agar tidak mentok di layar kecil */
+}
+
+/* ====== POPUP BOX ====== */
+.popup-box {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  animation: fadeInUp 0.3s ease;
+}
+
+/* ====== TOMBOL KONFIRMASI ====== */
+.popup-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.popup-actions .btn {
+  padding: 10px 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  min-width: 100px;
+}
+
+.popup-actions .btn-ya {
+  background-color: #c47bd6;
+  color: white;
+}
+
+.popup-actions .btn-tidak {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+/* ====== RESPONSIVE UNTUK MOBILE (≤ 480px) ====== */
+@media (max-width: 480px) {
+  .popup-box {
+    padding: 16px;
+  }
+
+  .popup-box p {
+    font-size: 0.95rem;
+  }
+
+  .popup-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .popup-actions .btn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+}
+
+/* untuk konfirmasi hapus */
+.success-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #5de584;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.success-toast.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-edit, .btn-hapus {
+  text-decoration: none;     /* hilangkan garis bawah */
+  font-size: 18px;           /* sesuaikan ukuran ikon */
+  margin-right: 10px;        /* beri jarak antar ikon */
+  display: inline-block;
+  color: inherit;            /* biar ikut warna teks induknya, bisa diubah */
+}
+
+.btn-edit:hover, .btn-hapus:hover {
+  opacity: 0.8;
+  transform: scale(1.1);     /* efek hover */
+}

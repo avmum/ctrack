@@ -1,0 +1,686 @@
+/* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #fcddec 0%, #fde7f3 25%, #f8d7da 50%, #fdeef1 75%, #fcddec 100%);
+  background-size: 300% 300%;
+  animation: gradientWave 10s ease-in-out infinite, fadeInBody 1.2s ease-out;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  /* Efek lapisan glass yang lebih tebal */
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 25%, rgba(255, 255, 255, 0.45) 0%, transparent 80%),
+    radial-gradient(ellipse 500px 300px at 85% 75%, rgba(255, 182, 193, 0.25) 0%, transparent 80%),
+    linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0));
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: glassFloat 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* ========== Sticky Footer Layout ========== */
+/* Sticky Footer Layout */
+html, body {
+  height: 100%;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.monitoring-section {
+  flex: 1 0 auto;
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInBody {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glassFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Section Pemantauan */
+/* Popup Form Style */
+
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(123, 31, 162, 0.3); /* ungu transparan */
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.form-box {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  max-width: 520px;
+  width: 90%;
+  position: relative;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+/* Judul Form */
+.popup-form h1 {
+  color: #6b21a8;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed #d8b4ef;
+  padding-bottom: 10px;
+}
+
+/* Tombol Tutup (×) */
+.button-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #9c27b0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.button-close:hover {
+  color: #6a0572;
+}
+
+/* Input, Select, Textarea Style */
+.symptom-form input[type="date"],
+.symptom-form textarea,
+.symptom-form select {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 2px solid #e2c4ff;
+  border-radius: 12px;
+  background-color: #fff8fc;
+  transition: border 0.3s, box-shadow 0.2s;
+  font-size: 1em;
+}
+
+.symptom-form textarea {
+  height: 100px;
+}
+
+.symptom-form input:focus,
+.symptom-form textarea:focus,
+.symptom-form select:focus {
+  outline: none;
+  border-color: #9b5de5;
+  box-shadow: 0 0 6px #d4aaff;
+}
+
+/* Label Style */
+.symptom-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #6a0572;
+}
+
+/* Grup tombol */
+.reset-btn {
+  background: linear-gradient(to right, #f3e8ff, #fce7f3); /* Gradasi ungu muda ke pink muda */
+  color: #6a0572;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(210, 170, 255, 0.3); /* Bayangan lembut */
+  min-width: 200px;             /* Sama panjang */
+  height: 56px;                 /* Sama tinggi */
+}
+
+.reset-btn:hover {
+  background: linear-gradient(to right, #e9d5ff, #fbcfe8);
+  color: #4c1d95;
+  transform: scale(1.03);
+  box-shadow: 0 6px 14px rgba(180, 140, 255, 0.4); /* Bayangan saat hover */
+}
+
+.submit-btn {
+  background: linear-gradient(to right, #9b5de5, #f15bb5); /* Gradasi ungu ke pink cerah */
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: block;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(170, 85, 200, 0.35); /* Glow ungu lembut */
+  min-width: 200px;             /* Panjang disamakan */
+  height: 56px;                 /* Tinggi konsisten */
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to right, #6a0572, #d726a3); /* Lebih gelap saat hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(120, 40, 180, 0.45); /* Bayangan lebih dalam saat hover */
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* Pesan Sukses */
+.form-success {
+  display: none;
+  margin-top: 16px;
+  color: #2e7d32;
+  text-align: center;
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+
+/* Success Message */
+.form-success {
+  display: none;
+  text-align: center;
+  color: #43a047;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 0.95em;
+}
+
+/* Tombol Submit */
+.tambah {
+  background: linear-gradient(to right, #9b5de5, #f15bb5);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.tambah:hover {
+  background: linear-gradient(to right, #6a0572, #d726a3);
+  transform: scale(1.03);
+}
+
+/* Konten */
+.tab-content {
+  display: none;
+}
+
+.tab-content.show {
+  display: block;
+}
+
+/* Success Message */
+.form-success {
+  display: none;
+  background: #d4edda;
+  color: #155724;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* GRAFIK */
+#grafik-tab {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#grafik-tab h2 {
+  color: #6a0572;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+#grafik-tab .chart-placeholder-text {
+  color: #a2329e;
+  font-style: italic;
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+#grafik-tab canvas#symptomChart {
+  width: 100% !important;
+  height: auto !important;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+
+/* Histori Gejala */
+/* General section styling */
+#history-tab {
+  padding: 2rem;
+  background: linear-gradient(135deg, #fce4f9, #e9d6f8);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(153, 0, 153, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+/* Section title */
+#history-tab h2 {
+  color: #800080;
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+/* Wrap the table for horizontal scroll */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff5fa;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(204, 153, 255, 0.2);
+  table-layout: fixed;
+}
+
+/* Header row */
+.history-table thead {
+  background-color: #d18ae3;
+}
+
+.history-table thead th {
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+/* Body rows */
+.history-table tbody tr {
+  border-bottom: 1px solid #f3d9fb;
+  transition: background 0.3s ease;
+}
+
+.history-table tbody tr:hover {
+  background-color: #f9e8ff;
+}
+
+.history-table td {
+  padding: 0.75rem;
+  color: #5c005c;
+  word-wrap: break-word;
+}
+
+/* Responsive table container */
+@media (max-width: 768px) {
+  .history-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/*=======Footer========*/
+footer {
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.88), rgba(241, 91, 181, 0.88)), url('../assets/bg2.jpeg') center/cover no-repeat;
+  color: #fff;
+  padding: 20px 15px;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 50px;
+  border-radius: 30px 30px 0 0;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 160px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffe6f5;
+}
+
+.footer-column p,
+.footer-column li,
+.footer-column a {
+  color: #fefefe;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.footer-column a {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #ffd6ec;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  font-size: 12px;
+  color: #fceaff;
+}
+
+/* ====================================================================== */
+/* ================ 1. EXTRA-LARGE DESKTOP ≤ 1200 px =====================*/
+/* Tweak kartu & konten agar tak terlalu melebar di layar laptop kecil   */
+/* ====================================================================== */
+@media (max-width: 1200px) {
+
+  .form-box,
+  #grafik-tab,
+  #history-tab {
+    max-width: 92%;         /* biar lega kiri-kanan */
+  }
+}
+
+/* ====================================================================== */
+/* =================== 2. LARGE TABLET ≤ 992 px ==========================*/
+/* Peralihan grid-desktop ke tata letak kolom tunggal                     */
+/* ====================================================================== */
+@media (max-width: 992px) {
+
+  /* ══ Popup form & kartu═════════════ */
+  .form-box {
+    padding: 32px 26px;
+  }
+
+  /* ══ Grafik & histori═══════════════ */
+  #grafik-tab, #history-tab {
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+  }
+
+  /* ══ Tombol════════════════════════ */
+  .btn-group {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .submit-btn,
+  .reset-btn,
+  .tambah {
+    min-width: 80%;
+  }
+}
+
+/* ====================================================================== */
+/* ==================== 3. PORTRAIT TABLET ≤ 768 px ======================*/
+/* Tata letak satu kolom penuh, typo lebih kecil                          */
+/* ====================================================================== */
+@media (max-width: 768px) {
+
+  /* ══ Typography════════════════════ */
+  h1, h2, h3 { font-size: 1.2rem; }
+  body        { font-size: 0.92rem; }
+
+  /* ══ Form elements═════════════════ */
+  .symptom-form input,
+  .symptom-form textarea,
+  .symptom-form select {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  /* ══ Tabel histori══════════════════*/
+  .history-table thead   { display: none; }
+  .history-table,
+  .history-table tbody,
+  .history-table tr,
+  .history-table td {
+    display: block;
+    width: 100%;
+  }
+  .history-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  .history-table td::before {
+    content: attr(data-label);        /* tambahkan data-label di HTML td */
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+}
+
+/* ====================================================================== */
+/* ====================== 4. MOBILE ≤ 576 px =============================*/
+/* Hampir seluruh elemen full-width, padding lebih kecil                  */
+/* ====================================================================== */
+@media (max-width: 576px) {
+
+  /* ══ Popup form════════════════════ */
+  .form-box {
+    border-radius: 16px;
+    padding: 28px 20px;
+    max-width: 95%;
+  }
+
+  /* ══ Judul form════════════════════ */
+  .popup-form h1 { font-size: 1.25rem; }
+
+  /* ══ Tombol════════════════════════ */
+  .submit-btn,
+  .reset-btn,
+  .tambah {
+    height: auto;
+    padding: 12px 20px;
+    font-size: 0.98rem;
+  }
+
+  /* ══ Grafik canvas═════════════════ */
+  #grafik-tab canvas#symptomChart {
+    border-radius: 8px;
+  }
+}
+
+/* ====================================================================== */
+/* ====================== 5. SMALL DEVICES ≤ 400 px ======================*/
+/* Font lebih kecil, margin minimum                                       */
+/* ====================================================================== */
+@media (max-width: 400px) {
+
+  .form-box,
+  #grafik-tab,
+  #history-tab {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  h1, h2 { font-size: 1.1rem; }
+  body   { font-size: 0.88rem; }
+
+  .button-close { top: 8px; right: 12px; }
+
+  .submit-btn,
+  .reset-btn,
+  .tambah { font-size: 0.9rem; }
+}
+
+/* ===================================================== */
+/*   MOBILE & TABLET  ≤ 768 px —  SCROLL VERTIKAL SAJA   */
+/* ===================================================== */
+@media (max-width: 768px) {
+
+  /* 1️⃣  Jadikan kontainer #history-tab penampung scroll   */
+  #history-tab {
+    max-height: 70vh;          /* tinggi maksimum = 70 % tinggi layar */
+    overflow-y: auto;          /* scroll vertikal */
+    overflow-x: hidden;        /* sembunyikan scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* momentum scroll iOS */
+  }
+
+  /* 2️⃣  Paksa tabel agar tidak melebar keluar layar        */
+  .history-table {
+    width: 100%;               /* tetap 100% dari kontainer */
+    table-layout: fixed;       /* kolom lebar tetap, boleh wrap teks */
+    border-collapse: collapse; /* tetap rapat */
+  }
+
+  /* 3️⃣  Biar teks dalam sel mau membungkus                */
+  .history-table th,
+  .history-table td {
+    white-space: normal;       /* izinkan baris ganti dalam sel */
+    word-wrap: break-word;     /* bungkus kata panjang */
+    padding: 0.6rem 0.5rem;    /* sedikit lebih rapat */
+    font-size: 0.9rem;         /* kecilkan huruf agar muat */
+  }
+
+  /* 4️⃣  (Opsional) kecilkan judul section                  */
+  #history-tab h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Untuk Modal Popup terkait pesan sukses menambahkan gejala*/
+.popup-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.popup-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.popup-content .modal-buttons button {
+  background: #8e24aa;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popup-content .modal-buttons button:hover {
+  background: #ab47bc;
+}
+
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+}

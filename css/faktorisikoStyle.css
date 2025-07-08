@@ -1,0 +1,195 @@
+/* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #fcddec 0%, #fde7f3 25%, #f8d7da 50%, #fdeef1 75%, #fcddec 100%);
+  background-size: 300% 300%;
+  animation: gradientWave 10s ease-in-out infinite, fadeInBody 1.2s ease-out;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  /* Efek lapisan glass yang lebih tebal */
+  background: 
+    radial-gradient(ellipse 600px 400px at 15% 25%, rgba(255, 255, 255, 0.45) 0%, transparent 80%),
+    radial-gradient(ellipse 500px 300px at 85% 75%, rgba(255, 182, 193, 0.25) 0%, transparent 80%),
+    linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0));
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: glassFloat 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInBody {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glassFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Konten Faktor Risiko */
+.risk-section {
+  padding: 40px 30px;
+  margin: 40px auto;
+  max-width: 900px;
+  background: #fff0f6;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(180, 100, 140, 0.1);
+  color: #4b004b;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+/* Judul Section */
+.risk-section h2 {
+  font-size: 28px;
+  color: #8e24aa;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.risk-section h3 {
+  font-size: 22px;
+  color: #6b1e66;
+  margin-top: 30px;
+  margin-bottom: 16px;
+}
+
+/* Daftar Risiko */
+.risk-list {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.risk-list li {
+  margin-bottom: 12px;
+  padding-left: 5px;
+  list-style-type: disc;
+}
+
+/* Tambahan untuk responsive dan kenyamanan */
+@media (max-width: 768px) {
+  .risk-section {
+    padding: 25px 20px;
+    font-size: 15px;
+  }
+
+  .risk-section h2 {
+    font-size: 24px;
+  }
+
+  .risk-section h3 {
+    font-size: 20px;
+  }
+}
+
+.baca-selengkapnya-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.baca-selengkapnya-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #a64ac9, #ff6ec7); /* ungu ke pink */
+  color: white;
+  padding: 12px 28px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 16px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 12px rgba(166, 74, 201, 0.3); /* shadow lembut */
+  transition: all 0.3s ease;
+}
+
+.baca-selengkapnya-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px rgba(166, 74, 201, 0.4);
+  transform: translateY(-2px);
+}
+
+/*=======Footer========*/
+footer {
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.88), rgba(241, 91, 181, 0.88)), url('../assets/bg2.jpeg') center/cover no-repeat;
+  color: #fff;
+  padding: 20px 15px;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 50px;
+  border-radius: 30px 30px 0 0;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 160px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffe6f5;
+}
+
+.footer-column p,
+.footer-column li,
+.footer-column a {
+  color: #fefefe;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.footer-column a {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #ffd6ec;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  font-size: 12px;
+  color: #fceaff;
+}

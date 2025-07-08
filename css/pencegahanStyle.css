@@ -1,0 +1,216 @@
+/* Reset & Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body */
+body {
+  background: linear-gradient(135deg, #fcddec 0%, #fde7f3 25%, #f8d7da 50%, #fdeef1 75%, #fcddec 100%);
+  background-size: 300% 300%;
+  animation: gradientWave 10s ease-in-out infinite, fadeInBody 1.2s ease-out;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  /* Efek lapisan glass yang lebih tebal */
+  background: 
+    radial-gradient(ellipse 600px 400px at 15% 25%, rgba(255, 255, 255, 0.45) 0%, transparent 80%),
+    radial-gradient(ellipse 500px 300px at 85% 75%, rgba(255, 182, 193, 0.25) 0%, transparent 80%),
+    linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(255,255,255,0));
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: glassFloat 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInBody {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glassFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Pencegahan Kanker Section */
+.pencegahan-kanker {
+  background: #fff0f9;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(155, 93, 229, 0.2);
+  margin: 40px auto;
+  max-width: 900px;
+  animation: fadeInUp 0.8s ease;
+  color: #4b006e;
+}
+
+.pencegahan-kanker h2 {
+  color: #9b5de5;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pencegahan-kanker h3 {
+  color: #f15bb5;
+  margin-top: 25px;
+  font-size: 1.3em;
+}
+
+.pencegahan-kanker p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.pencegahan-kanker ul {
+  margin-left: 20px;
+  padding-left: 15px;
+}
+
+.pencegahan-kanker li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.pencegahan-kanker li::before {
+  content: "💜";
+  position: absolute;
+  left: -20px;
+  top: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+}
+
+.baca-selengkapnya-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.baca-selengkapnya-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #a64ac9, #ff6ec7); /* ungu ke pink */
+  color: white;
+  padding: 12px 28px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 16px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 12px rgba(166, 74, 201, 0.3); /* shadow lembut */
+  transition: all 0.3s ease;
+}
+
+.baca-selengkapnya-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px rgba(166, 74, 201, 0.4);
+  transform: translateY(-2px);
+}
+
+/*=======Footer========*/
+footer {
+  background: linear-gradient(135deg, rgba(155, 93, 229, 0.88), rgba(241, 91, 181, 0.88)), url('../assets/bg2.jpeg') center/cover no-repeat;
+  color: #fff;
+  padding: 20px 15px;
+  font-size: 13px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 50px;
+  border-radius: 30px 30px 0 0;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 160px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffe6f5;
+}
+
+.footer-column p,
+.footer-column li,
+.footer-column a {
+  color: #fefefe;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.footer-column a {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #ffd6ec;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  font-size: 12px;
+  color: #fceaff;
+}
