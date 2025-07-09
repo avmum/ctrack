@@ -7,12 +7,12 @@ require_once '../config/Database.php';
 $pdo = (new Database())->getConnection();
 
 // Ambil daftar kota unik dari tabel rumahsakit
-$stmtKota = $pdo->prepare("SELECT DISTINCT kota FROM rumahsakit ORDER BY kota ASC");
+$stmtKota = $pdo->prepare("SELECT DISTINCT kota FROM rumahSakit ORDER BY kota ASC");
 $stmtKota->execute();
 $daftarKota = $stmtKota->fetchAll(PDO::FETCH_COLUMN);
 
 // Ambil semua rumah sakit
-$stmt = $pdo->prepare("SELECT * FROM rumahsakit");
+$stmt = $pdo->prepare("SELECT * FROM rumahSakit");
 $stmt->execute();
 $daftarRS = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

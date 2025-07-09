@@ -29,7 +29,7 @@ if (isset($_SESSION['register_success'])) {
     unset($_SESSION['register_success']);
 }
 
-$query = "SELECT * FROM survivaljourney ORDER BY tglUpload DESC";
+$query = "SELECT * FROM survivalJourney ORDER BY tglUpload DESC";
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 $videos = $stmt->fetchAll(PDO::FETCH_ASSOC);

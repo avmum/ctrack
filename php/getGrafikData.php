@@ -18,7 +18,7 @@ $sql = "SELECT DAYNAME(tglGejala) AS hari, AVG(CASE
             WHEN intensitas = 'sedang' THEN 4
             WHEN intensitas = 'berat' THEN 6
             ELSE 0 END) AS rata_intensitas
-        FROM gejalauser 
+        FROM gejalaUser 
         WHERE userId = ?
         GROUP BY hari
         ORDER BY FIELD(hari, 'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday')";

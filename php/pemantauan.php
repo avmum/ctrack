@@ -14,7 +14,7 @@ if (!isset($userId)) {
 }
 
 // mendapatkan data gejala milik user dari DB
-$stmt = $pdo->prepare("SELECT tglGejala, gejala, intensitas FROM gejalauser WHERE userId = ? ORDER BY tglGejala DESC");
+$stmt = $pdo->prepare("SELECT tglGejala, gejala, intensitas FROM gejalaUser WHERE userId = ? ORDER BY tglGejala DESC");
 $stmt->execute([$userId]);
 $gejalaList = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
