@@ -1,10 +1,10 @@
 <?php
 
 class Database {
-    private $host = "localhost";
-    private $db_name = "projec15_ctrack_db";
-    private $username = "projec15_root";
-    private $password = "@kaesquare123";
+    private $host = 'localhost';
+    private $db_name = 'projec15_ctrack_db';
+    private $username = 'projec15_root';
+    private $password = '@kaesquare123';
     public $conn;
 
     public function getConnection() {
