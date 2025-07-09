@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/database.php';
+require_once '../config/Database.php';
 
 if (!isset($_SESSION['user'])) {
     header("Location: ../login.php");
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jenisPenjamin = $_POST['jenisPenjamin'];
     $passwordBaru = $_POST['passwordBaru'] ?? null;
 
-    // ✔️ Upload foto jika ada
+    // Upload foto jika ada
     if (isset($_FILES['fotoProfil']) && $_FILES['fotoProfil']['error'] === UPLOAD_ERR_OK) {
         $tmpName = $_FILES['fotoProfil']['tmp_name'];
         $originalName = $_FILES['fotoProfil']['name'];
@@ -87,14 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt = $pdo->prepare($sql);
             $stmt->execute($params);
 
-            // ✔️ Update password jika diisi
+            // Update password jika diisi
             if (!empty($passwordBaru)) {
                 $hashed = password_hash($passwordBaru, PASSWORD_DEFAULT);
                 $pdo->prepare("UPDATE users SET password=? WHERE userId=?")
                     ->execute([$hashed, $userId]);
             }
 
-            // ✔️ Update session
+            // Update session
             $_SESSION['user']['nama'] = $nama;
             $_SESSION['user']['email'] = $email;
             $_SESSION['user']['tglLahir'] = $tglLahir;

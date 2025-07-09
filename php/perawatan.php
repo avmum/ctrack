@@ -1,7 +1,7 @@
 <?php
 $cssFile = "../css/perawatanStyle.css";
 include("header.php");
-require_once '../config/database.php';
+require_once '../config/Database.php';
 
 $pdo = (new Database())->getConnection();
 $userId = $_SESSION['user']['userId'] ?? 0;

@@ -2,7 +2,7 @@
 ob_clean();
 header('Content-Type: application/json');
 
-require_once '../config/database.php';
+require_once '../config/Database.php';
 session_start();
 $pdo = (new Database())->getConnection();
 

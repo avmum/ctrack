@@ -2,7 +2,7 @@
 $cssFile = "../css/rsStyle.css";
 include("header.php");
 
-require_once '../config/database.php';
+require_once '../config/Database.php';
 
 $pdo = (new Database())->getConnection();
 
