@@ -23,7 +23,7 @@ $intensitas = $_POST['intensitas'] ?? '';
 // Validasi sederhana
 if (!empty($tglGejala) && !empty($gejala) && !empty($intensitas)) {
     try {
-        $stmt = $pdo->prepare("INSERT INTO gejalauser (userId, tglGejala, gejala, intensitas) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO gejalaUser (userId, tglGejala, gejala, intensitas) VALUES (?, ?, ?, ?)");
         $result = $stmt->execute([$userId, $tglGejala, $gejala, $intensitas]);
 
         if ($result) {
